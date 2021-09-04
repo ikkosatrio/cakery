@@ -21,9 +21,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['title'] = "Product";
-        $data['data'] = Product::all()->sortByDesc('id');
-        
+        $data['title'] = "Product Cake";
+        $data['data'] = Product::where(['type' => 1])->get()->sortByDesc('id');
+
         return view("admin/product/index",compact('data'));
     }
 
@@ -35,8 +35,8 @@ class ProductController extends Controller
     public function create()
     {
         $data['typeForm'] = "create";
-        $data['title'] = "Product";
-        $data['category'] = ProductCategory::all()->sortByDesc('id');
+        $data['title'] = "Product Cake";
+        $data['category'] = ProductCategory::all();
         return view("admin/product/form",compact('data'));
     }
 
@@ -57,9 +57,10 @@ class ProductController extends Controller
             $newName = NULL;
         }
 
-        
+
         $data = $request->all();
         $data['image'] = $newName;
+        $data['type'] = 1;
         $data = Product::create($data);
         $data->save();
         $data->slug = Str::slug($request->title.'-'.$data->id, '-');
@@ -91,7 +92,7 @@ class ProductController extends Controller
     {
         $data['dataModel'] = Product::find($id);
         $data['typeForm'] = "Edit";
-        $data['title'] = "Product";
+        $data['title'] = "Product Cake";
         $data['category'] = ProductCategory::all()->sortByDesc('id');
         return view("admin/product/form",compact('data'));
     }
@@ -118,7 +119,7 @@ class ProductController extends Controller
             $ext     = $file->getClientOriginalExtension();
             $newName = rand(100000,1001238912).".".$ext;
             $file->move($this->img_location.'product',$newName);
-            
+
             $newFile = [ 'image' => $newName ];
             $data->update($newFile);
         }
@@ -127,9 +128,9 @@ class ProductController extends Controller
         if($newName){
             $dataReq['image'] = $newName;
         }
-        
+
         $dataReq['slug'] = Str::slug($dataReq['title'].'-'.$data->id, '-');
-        
+        $dataReq['type'] = 1;
 
         $data->update($dataReq);
         $data->save();

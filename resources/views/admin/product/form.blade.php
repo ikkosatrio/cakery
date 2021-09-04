@@ -79,7 +79,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-lg-2">Is Ready</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control" name="is_ready">
+                                        <select class="form-control select2" name="is_ready">
                                                 <option selected value="1">Ready</option>
                                                 <option value="0">Not Ready</option>
                                         </select>
@@ -90,7 +90,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-lg-2">Category</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control select-search" name="category_id" data-fouc>
+                                        <select class="form-control select2" name="category_id" data-fouc>
                                                 <option value="">Choose Category</option>
                                                 @foreach ($data['category'] as $item)
                                                     @if($data['typeForm'] != "create")

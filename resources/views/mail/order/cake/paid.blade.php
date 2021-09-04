@@ -486,7 +486,7 @@
                                                                 style="color: #615e5e; line-height: 140%; text-align: right; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;">
                                                                     <strong><span
-                                                                            style="font-size: 14px; line-height: 19.6px;">{{$template_data['data']->invoice}}</span></strong>
+                                                                            style="font-size: 14px; line-height: 19.6px;">{{$data->invoice}}</span></strong>
                                                                 </p>
                                                             </div>
 
@@ -562,7 +562,7 @@
 
 
 
-                    @foreach ($template_data['data']->details as $item)
+                    @foreach ($data->details as $item)
                     <div class="u-row-container" style="padding: 0px;background-color: transparent">
                         <div class="u-row no-stack"
                             style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
@@ -760,7 +760,7 @@
                                                                 style="color: #615e5e; line-height: 140%; text-align: right; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;">
                                                                     <strong><span
-                                                                            style="font-size: 14px; line-height: 19.6px;">{{number_format($template_data['data']->total,2)}}</span></strong>
+                                                                            style="font-size: 14px; line-height: 19.6px;">{{number_format($data->total,2)}}</span></strong>
                                                                 </p>
                                                             </div>
 
@@ -958,7 +958,7 @@
                                                                             style="font-size: 14px; line-height: 19.6px;">Your
                                                                             Addresss:</span></strong></p>
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-size: 14px; line-height: 19.6px;">{{$template_data['data']->billing_address}}&nbsp;
+                                                                        style="font-size: 14px; line-height: 19.6px;">{{$data->billing_address}}&nbsp;
                                                                     </span></p>
                                                             </div>
 
@@ -1029,7 +1029,7 @@
                                                                     style="box-sizing: border-box;display: inline-block;font-family:'Open Sans',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ff91a4; background-color: #ffffff; border-radius: 40px; -webkit-border-radius: 40px; -moz-border-radius: 40px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
                                                                     <span
                                                                         style="display:block;padding:15px 40px;line-height:120%;"><strong><span
-                                                                                style="font-size: 14px; line-height: 16.8px;">{{$template_data['data']->status}}</span></strong></span>
+                                                                                style="font-size: 14px; line-height: 16.8px;">{{$data->status}}</span></strong></span>
                                                                 </a>
                                                                 <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
                                                             </div>

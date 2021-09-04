@@ -115,7 +115,7 @@ class Order extends Model
 
 
 
-        Mail::send(['html' => 'mail.order.cake.paid'], $data,
+        return Mail::send(['html' => 'mail.order.cake.paid'], $data,
                         function ($message) use ($sendto,$data) {
                             $message->to($sendto)
                             ->subject('Kawaii Miam Order');

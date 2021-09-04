@@ -208,15 +208,17 @@
 								<li class="nav-item"><a href="{{ route('admin.gallery-category.index') }}" class="nav-link {{ Request::segment(2) == 'gallery-category' ? 'active':'' }}">Category Gallery</a></li>
 							</ul>
 						</li>
-						<li class="nav-item"><a href="{{ route('admin.client.index') }}" class="nav-link"><i class="icon-users"></i> <span>Client</span></a></li>
+						<li class="nav-item"><a href="{{ route('admin.shippingfee.index') }}" class="nav-link"><i class="icon-money"></i> <span>Shipping Fee</span></a></li>
+                        <li class="nav-item"><a href="{{ route('admin.client.index') }}" class="nav-link"><i class="icon-users"></i> <span>Client</span></a></li>
 						<li class="nav-item"><a href="{{ route('admin.appointment.index') }}" class="nav-link"><i class="icon-envelope"></i> <span>Appointment</span></a></li>
 						<!-- /main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Shop</div> <i class="icon-menu" title="Shop"></i></li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link {{ Request::segment(2) == 'product' || Request::segment(2) == 'product_category'}}"><i class="icon-magazine"></i> <span>Product</span></a>
+							<a href="#" class="nav-link {{ Request::segment(2) == 'product' || Request::segment(2) == 'product_category' || Request::segment(2) == 'product-other' ? 'active':''}}"><i class="icon-magazine"></i> <span>Product</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{ route('admin.product.index') }}" class="nav-link {{ Request::segment(2) == 'home' ? 'active':'' }}">Master Product</a></li>
-								<li class="nav-item"><a href="{{ route('admin.product-category.index') }}" class="nav-link {{ Request::segment(2) == 'home' ? 'active':'' }}">Product Categoty</a></li>
+								<li class="nav-item"><a href="{{ route('admin.product.index') }}" class="nav-link {{ Request::segment(2) == 'product' ? 'active':'' }}">Master Product Cake</a></li>
+                                <li class="nav-item"><a href="{{ route('admin.product-other.index') }}" class="nav-link {{ Request::segment(2) == 'product-other' ? 'active':'' }}">Master Product Other</a></li>
+								<li class="nav-item"><a href="{{ route('admin.product-category.index') }}" class="nav-link {{ Request::segment(2) == 'home' ? 'active':'' }}">Product Category</a></li>
 							</ul>
 						</li>
 						<li class="nav-item"><a href="{{ route('admin.order.index') }}" class="nav-link"><i class="icon-cart"></i> <span>Order</span></a></li>

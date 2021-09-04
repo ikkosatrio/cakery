@@ -23,7 +23,7 @@
     <link href="{{ url('public/assets/user') }}/css/style.css" rel="stylesheet">
     <link href="{{ url('public/assets/user') }}/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.7/jquery.jgrowl.css" integrity="sha512-bJUzQNnX8ns5wfU5evv67e9ILktl3dr6xQlwWUhB743gV5dZgOOvhnTg7l8LH/8noxBLctysfkz2e9nH5QDg+g==" crossorigin="anonymous" />
-    <link href="{{ url('public/assets/admin') }}/assets/css/cakcode.css" rel="stylesheet" type="text/css">
+    <link href="{{ url('public/assets/admin') }}/assets/css/cakcodeuser.css" rel="stylesheet" type="text/css">
 
     <link rel="shortcut icon" href="{{ url('public/assets/user') }}/images/favicon.png" type="image/x-icon">
     <link rel="icon" href="{{ url('public/assets/user') }}/images/favicon.png" type="image/x-icon">
@@ -105,7 +105,14 @@
                                 </ul>
 
                                 <ul class="navigation menu-right clearfix">
-                                    <li class="{{Request::is('shop*') || Request::is('product*') ? 'current' : ''}}"><a href="{{route('shop')}}">Shop</a></li>
+                                    <li class="{{Request::is('shop*') || Request::is('product*') ? 'current' : ''}} dropdown"><a href="#">Shop</a>
+                                        <ul>
+                                            <li><a href="{{route('shop')}}">Cake</a></li>
+                                            <li><a href="{{route('other.shop')}}">Non Cake</a></li>
+                                        </ul>
+                                    </li>
+
+
                                     <li class="{{Request::is('faq*') ? 'current' : ''}}"><a href="{{route('faq')}}">FAQs</a></li>
                                     <li class="{{Request::is('contact*') ? 'current' : ''}}"><a href="{{route('contact')}}">Contact</a></li>
                                 </ul>
@@ -115,11 +122,19 @@
 
                         <div class="outer-box clearfix">
                             <!-- Shoppping Car -->
-                            {{-- <div class="cart-btn">
-                                <a href="{{ url('public/assets/user') }}/shopping-cart.html"><i
-                                        class="icon flaticon-commerce"></i> <span class="count">2</span></a>
+                            <div class="cart-btn">
+                                {{-- <a href="{{ url('public/assets/user') }}/shopping-cart.html"><i
+                                        class="icon flaticon-commerce"></i> <span class="count">2</span></a> --}}
 
-                                <div class="shopping-cart">
+                                @if (Auth::guard('member')->user())
+                                    <a href="{{ route('member') }}"><i
+                                            class="fa fa-user"> {{ Str::limit(Auth::guard('member')->user()->name,12) }}</i></a>
+                                @else
+                                    <a href="{{ route('member.login') }}"><i
+                                        class="fa fa-user"> Login</i></a>
+                                @endif
+
+                                {{-- <div class="shopping-cart">
                                     <ul class="shopping-cart-items">
                                         <li class="cart-item">
                                             <img src="https://via.placeholder.com/300x300"
@@ -151,9 +166,9 @@
                                         <a href="{{ url('public/assets/user') }}/checkout.html"
                                             class="theme-btn">Checkout</a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!--end shopping-cart -->
-                            </div> --}}
+                            </div>
 
                             <!-- Search Btn -->
                             <div class="search-box">

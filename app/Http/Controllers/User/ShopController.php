@@ -8,6 +8,7 @@ use App\Model\Order;
 use App\Model\OrderDetail;
 use App\Model\Product;
 use App\Model\ProductCategory;
+use App\Model\ShippingFee;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +19,15 @@ class ShopController extends Controller
     {
         $data['menu'] = "Shop";
         $data['title'] = "Shop";
+
         $data['cart'] = \Cart::getContent();
 
         // \Cart::remove(4);
 
         $query = Product::query();
         $query = $query->where("is_ready",'1');
+        $query = $query->where("type",'1');
+
 
         if($request->category){
             $query = $query->where("category_id",$request->category);
@@ -65,6 +69,7 @@ class ShopController extends Controller
         $data['title'] = "Checkout";
         $data['cart'] = \Cart::getContent();
         $data['province'] = $this->getProvince();
+        $data['postcode'] = ShippingFee::all();
         // dd($data);
         return view("user/checkout",compact('data'));
 
@@ -224,7 +229,7 @@ class ShopController extends Controller
 
         $data->sendOrderPaidEmail();
 
-        dd($data);
+        // dd($data);
 
         $arrData = [
             "Code" => 200,

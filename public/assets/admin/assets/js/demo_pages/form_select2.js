@@ -34,6 +34,8 @@ var Select2Selects = function() {
             minimumResultsForSearch: Infinity
         });
 
+        $('.select2').select2();
+
         // Select with search
         $('.select-search').select2();
 

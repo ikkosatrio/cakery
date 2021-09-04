@@ -45,26 +45,25 @@
 
                             <div class="form-group">
                                 <div class="field-label">Province <sup>*</sup></div>
-                                <select name="province" id="selectProvince" class="form-control select2">
-                                    <option value="0">Choose</option>
-                                    @foreach ($data['province'] as $item)
-                                        <option data-id="{{$item->province_id}}" value="{{$item->province}}">{{$item->province}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="province" value="" id="inputProvince" placeholder="Province">
                             </div>
 
                             <!--Form Group-->
                             <div class="form-group">
                                 <div class="field-label">City <sup>*</sup></div>
-                                <select name="city" id="selectCity" class="form-control select2">
-                                    <option value="0">Choose</option>
-                                </select>
+                                <input type="text" name="city" value="" id="inputCity" placeholder="City">
                             </div>
+
 
                             <!--Form Group-->
                             <div class="form-group">
                                 <div class="field-label">Postcode/ ZIP <sup>*</sup></div>
-                                <input type="text" name="postcode" value="" id="inputZipcode" placeholder="" required="">
+                                <select name="postcode" id="selectPostCode" class="form-control select2">
+                                    <option value="0">Choose</option>
+                                    @foreach ($data['postcode'] as $item)
+                                        <option data-id="{{$item->id}}" value="{{$item->id}}">{{$item->postcode}}-{{number_format($item->price,2)}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <!--Form Group-->
@@ -129,6 +128,10 @@
                     <tr class="cart-subtotal">
                         <th colspan="2">Subtotal</th>
                         <td><span class="amount">{{number_format(\Cart::getSubTotal())}}</span></td>
+                    </tr>
+                    <tr class="cart-subtotal">
+                        <th colspan="2">Shipping Fee</th>
+                        <td><span class="amount">0</span></td>
                     </tr>
                     <tr class="order-total">
                         <th colspan="2">Total</th>
